@@ -1,26 +1,29 @@
-let bla = function one_card () {
+function create_duplicate_html_card (card_name) {
+    function create_html_card (card_name) {
     let front = document.createElement("img");
     let back = document.createElement("img");
     let card = document.createElement("div");
     card.className = "memory-card";
     front.className = "front-face";
-    front.src = "static/img/emperor.gif";
+    front.src = "static/img/" + card_name + ".gif";
     back.className = "back-face";
     back.src = "static/img/adventurecardback.png";
     card.appendChild(front);
     card.appendChild(back);
     return card;
-    };
-
-
-function maybe () {
+    }
     let game = document.getElementsByClassName('memory-game');
-    game[0].appendChild(bla());
-    game[0].appendChild(bla());
+    game[0].appendChild(create_html_card(card_name));
+    game[0].appendChild(create_html_card(card_name));
 }
 
 
-maybe();
+function pick_card () {
+    var cards = ["baron", "emperor", "feugen", "kelthuzad", "loatheb", "majordomo", "shade", "stalagg"];
+    for (let i = 0; i < cards.length; i++) {
+        create_duplicate_html_card(cards[i])
+    }
+}
 
 
-
+pick_card();
