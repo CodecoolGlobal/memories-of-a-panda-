@@ -11,13 +11,14 @@ body {
 }
 
 .memory-game {
-    width: 600px;
-    height: 600px;
+    width: 490px;
+    height: 490px;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     perspective: 1000px;
-    margin-top: 250px;
+    margin-top: 135px;
+    margin-left: 445px;
 }
 
 
