@@ -26,15 +26,26 @@ function pick_card () {
     let audio = new Audio("/static/music/explorer.mp3");
     audio.pause();
     audio.play();
-    level1 = true;
+    let level3 = true;
+    let cards = document.querySelectorAll(".memory-game")
+
     if (level1) {
-        var arrayOfCards = ["stalagg", "emperor", "feugen"]
+        var arrayOfCards = ["stalagg", "emperor"]
+        for (card of cards) {
+            card.setAttribute("data-level", "1")
+        }
     }
     else if (level2) {
         arrayOfCards = ["stalagg", "emperor", "feugen", "kelthuzad", "loatheb", "majordomo"]; ///"shade", "baron"];
+        for (card of cards) {
+            card.setAttribute("data-level", "2")
+        }
     }
-    else {
-        arrayOfCards = []
+    else if (level3) {
+        arrayOfCards = ["stalagg","stalagg","stalagg","stalagg","stalagg","stalagg","stalagg","stalagg","stalagg"];
+        for (card of cards) {
+            card.setAttribute("data-level", "3")
+        }
     }
     for (let i = 0; i < arrayOfCards.length; i++) {
         create_duplicate_html_card(arrayOfCards[i])
