@@ -8,16 +8,19 @@ body {
     background-image: url("/static/img/boardbigger.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
+    position: relative;
 }
 
 .memory-game {
-    width: 600px;
-    height: 600px;
+    width: 69vh;
+    height: 69vh;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     perspective: 1000px;
-    margin-top: 250px;
+    margin-top: 16vh;
+    margin-left: 54vh;
 }
 
 
