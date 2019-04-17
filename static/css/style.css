@@ -5,6 +5,9 @@ img {
 body {
     height: 100vh;
     display: flex;
+    background-image: url("/static/img/boardbigger.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .memory-game {
@@ -14,6 +17,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     perspective: 1000px;
+    margin-top: 250px;
 }
 
 
@@ -22,7 +26,6 @@ body {
     height: calc(33.333% - 10px);
     margin: 5px;
     position: relative;
-    transition: scale(1);
     transform-style: preserve-3d;
     transition: 0.5s;
 }
