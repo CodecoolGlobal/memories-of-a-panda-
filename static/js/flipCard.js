@@ -26,7 +26,7 @@ function pick_card () {
     let audio = new Audio("/static/music/explorer.mp3");
     audio.pause();
     audio.play();
-    level1 = true;
+    level3 = true;
     let cards = document.querySelectorAll(".memory-game");
 
     if (level1) {
@@ -67,6 +67,22 @@ function pick_card () {
         else if (level3) {
             let body = document.getElementsByTagName("body");
             body[0].setAttribute("data-cardback", "level3");
+
+            let levels = document.getElementsByClassName("memory-card");
+
+            try {
+                for (let i = 6; i < 19; i++) {
+                    levels[i].setAttribute("data-margin", "cardRow");
+                }
+            } catch(err) {
+                console.log("error")
+            }
+
+            for (let i = 0; i < 19; i++) {
+                    levels[i].setAttribute("data-level", "3");
+                }
+
+
         }
 }
 
