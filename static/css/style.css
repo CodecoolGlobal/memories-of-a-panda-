@@ -50,14 +50,14 @@ body[data-cardback="level3"] {
 
 
 .memory-game[data-level='3'] {
-    width: 49vh;
-    height: 49vh;
+    width: 88vh;
+    height: 88vh;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     perspective: 1000px;
     margin-top: 16vh;
-    margin-left: 55.5vh;
+    margin-left: 46.5vh;
 }
 
 .memory-card {
@@ -69,16 +69,22 @@ body[data-cardback="level3"] {
     transition: 0.5s;
 }
 
+.memory-card[data-level="3"] {
+    width: calc(24% - 8vh) !important;
+    height: calc(33.333% - 8vh) !important;
+}
 
 .memory-card[data-margin="secondCard"] {
-    margin-right: 33vh;
+    margin-right: 40vh;
 }
 
 .memory-card[data-margin="thirdCard"] {
     margin-top: -33vh !important;
 }
 
-
+.memory-card[data-margin="cardRow"] {
+    margin-top: -20vh !important;
+}
 
 .memory-card:active {
     transform: scale(.97);
