@@ -11,6 +11,7 @@ let lockBoard = false;
 function flipCard() {
     if (lockBoard) return;
     if (this === firstCard) return;
+
     this.classList.toggle('flip');
 
     if (hasFlippedCard === false) {
@@ -28,8 +29,26 @@ function flipCard() {
 
 function checkForMatch() {
     let isMatch = firstCard.dataset.cardname === secondCard.dataset.cardname;
-
-    isMatch ? disableCards() : unflipCards()
+    if (isMatch) {disableCards();
+    let wellplayed1 = new Audio("/static/music/wellplayed.mp3");
+    let wellplayed2 = new Audio("/static/music/suffer.mp3");
+    let random = Math.floor(Math.random()*2);
+    if (random === 1) {
+        wellplayed1.play();
+    }
+    else {
+        wellplayed2.play();}
+    }
+    else {unflipCards();
+    let mistake1 = new Audio("/static/music/mistake.mp3");
+    let mistake2 = new Audio("/static/music/sorry.mp3");
+    let random = Math.floor(Math.random()*2);
+    if (random === 1) {
+        mistake1.play();
+    }
+    else {
+        mistake2.play();}
+    }
 }
 
 function disableCards() {
@@ -42,7 +61,7 @@ function unflipCards() {
     setTimeout(() => {
         firstCard.classList.remove('flip')
         secondCard.classList.remove('flip')
-
+        firstCard = "";
         lockBoard = false;
     }, 1500)
 }

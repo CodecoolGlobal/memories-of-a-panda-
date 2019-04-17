@@ -21,8 +21,9 @@ function create_duplicate_html_card (card_name) {
 
 function pick_card () {
     let audio = new Audio("/static/music/explorer.mp3");
+    audio.pause()
     audio.play();
-    var cards = ["baron", "emperor", "feugen", "kelthuzad", "loatheb", "majordomo"]; ///"shade", "stalagg"];
+    var cards = ["stalagg", "emperor", "feugen", "kelthuzad", "loatheb", "majordomo"]; ///"shade", "baron"];
     for (let i = 0; i < cards.length; i++) {
         create_duplicate_html_card(cards[i])
     }
