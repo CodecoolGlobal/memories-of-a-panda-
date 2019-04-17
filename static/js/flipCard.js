@@ -1,5 +1,7 @@
 var level1, level2, level3;
-
+let hasFlippedCard = false;
+let firstCard, secondCard;
+let lockBoard = false;
 
 function create_duplicate_html_card (cardName, cardBack) {
     function create_html_card (cardName) {
@@ -21,13 +23,22 @@ function create_duplicate_html_card (cardName, cardBack) {
     game[0].appendChild(create_html_card(cardName));
 }
 
-
-function pick_card () {
+function pick_card (level) {
     let audio = new Audio("/static/music/explorer.mp3");
     audio.pause();
     audio.play();
-    level3 = true;
     let cards = document.querySelectorAll(".memory-game");
+
+    if (level === level1) {
+        level1 = true;
+    }
+    else if (level === level2) {
+        level2 = true;
+    }
+    else if (level === level3) {
+        level3 = true;
+    }
+
 
     if (level1) {
         var arrayOfCards = ["deathwing", "ragnaros"];
@@ -86,19 +97,74 @@ function pick_card () {
         }
 }
 
-
 function checkWin () {
     let flippedCards = document.querySelectorAll(".memory-card");
+    let counter = 0;
     for (card of flippedCards) {
-        console.log(card)
+        if (card.className === "memory-card flip") {
+            counter++;
+        }
+        if (level1) {
+            if (counter === 4) {
+                level1 = false;
+                level2 = true;
+                setTimeout(() => {
+                    for (card of flippedCards) {
+                        if (card.className === "memory-card flip") {
+                            card.remove();
+                        }
+                    }
+                }, 1500);
+                setTimeout(() => {
+                    let body = document.getElementsByTagName("body");
+                    body[0].setAttribute("data-victory", "win1");
+                }, 1500);
+                setTimeout( () => {
+                    let body = document.getElementsByTagName("body");
+                    body[0].removeAttribute("data-victory");
+                    pick_card(level2)
+                }, 3500);
+            }
+        }
+        else if (level2) {
+            if (counter === 12) {
+                level2 = false;
+                level3 = true;
+                setTimeout(() => {
+                    for (card of flippedCards) {
+                        if (card.className === "memory-card flip") {
+                            card.remove();
+                        }
+                    }
+                }, 1500);
+                setTimeout(() => {
+                    let body = document.getElementsByTagName("body");
+                    body[0].setAttribute("data-victory", "win2");
+                }, 1500);
+                setTimeout( () => {
+                    let body = document.getElementsByTagName("body");
+                    body[0].removeAttribute("data-victory");
+                    pick_card(level3)
+                }, 3500);
+            }
+        }
+        else if (level3) {
+            if (counter === 18) {
+                setTimeout(() => {
+                    for (card of flippedCards) {
+                        if (card.className === "memory-card flip") {
+                            card.remove();
+                        }
+                    }
+                }, 1500);
+                setTimeout(() => {
+                    let body = document.getElementsByTagName("body");
+                    body[0].setAttribute("data-victory", "win3");
+                }, 1500);
+            }
+        }
     }
 }
-
-
-let hasFlippedCard = false;
-let firstCard, secondCard;
-let lockBoard = false;
-
 
 function flipCard() {
     if (lockBoard) return;
@@ -159,7 +225,6 @@ function unflipCards() {
     }, 1500)
 }
 
-
 function addEventListeners () {
     let cards = document.querySelectorAll(".memory-card");
     for (card of cards) {
@@ -167,4 +232,5 @@ function addEventListeners () {
     }
 }
 
-pick_card();
+
+pick_card(level1);
