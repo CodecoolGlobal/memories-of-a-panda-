@@ -1,4 +1,4 @@
-var level1, level2;
+var level1, level2, level3;
 
 
 function create_duplicate_html_card (cardName, cardBack) {
@@ -27,22 +27,47 @@ function pick_card () {
     audio.pause();
     audio.play();
     level1 = true;
+    let cards = document.querySelectorAll(".memory-game");
+
     if (level1) {
         var arrayOfCards = ["deathwing", "ragnaros"];
-        var cardback = "classiccardback"
-    }
-    else if (level2) {
+        var cardback = "classiccardback";
+        for (card of cards) {
+            card.setAttribute("data-level", "1")
+        }
+    } else if (level2) {
         arrayOfCards = ["stalagg", "emperor", "feugen", "kelthuzad", "loatheb", "majordomo"]; ///"shade", "baron"];
-        cardback = "adventurecardback"
-    }
-    else {
+        cardback = "adventurecardback";
+        for (card of cards) {
+            card.setAttribute("data-level", "2")
+        }
+    } else if (level3) {
         arrayOfCards = ["chillmaw", "hadronox", "kun", "lichking", "pyros", "ragnaroslight", "reno", "swampking", "yshaarj"]
-        cardback = "goldencardback"
+        cardback = "goldencardback";
+        for (card of cards) {
+            card.setAttribute("data-level", "3")
+        }
     }
-    for (let i = 0; i < arrayOfCards.length; i++) {
-        create_duplicate_html_card(arrayOfCards[i], cardback)
-    }
-    addEventListeners();
+        for (let i = 0; i < arrayOfCards.length; i++) {
+            create_duplicate_html_card(arrayOfCards[i], cardback)
+        }
+        addEventListeners();
+        if (level1) {
+            let divs = document.getElementsByClassName("memory-card");
+            let body = document.getElementsByTagName("body");
+            body[0].setAttribute("data-cardback", "level1");
+            divs[1].setAttribute("data-margin", "secondCard");
+            divs[2].setAttribute("data-margin", "thirdCard");
+            divs[3].setAttribute("data-margin", "thirdCard");
+        }
+        else if (level2) {
+            let body = document.getElementsByTagName("body");
+            body[0].setAttribute("data-cardback", "level2");
+        }
+        else if (level3) {
+            let body = document.getElementsByTagName("body");
+            body[0].setAttribute("data-cardback", "level3");
+        }
 }
 
 
