@@ -4,6 +4,7 @@ function create_duplicate_html_card (card_name) {
     let back = document.createElement("img");
     let card = document.createElement("div");
     card.className = "memory-card";
+    card.setAttribute("data-cardname", `${card_name}`)
     front.className = "front-face";
     front.src = "static/img/" + card_name + ".gif";
     back.className = "back-face";
