@@ -1,24 +1,24 @@
 var level1, level2;
 
 
-function create_duplicate_html_card (card_name) {
-    function create_html_card (card_name) {
+function create_duplicate_html_card (cardName, cardBack) {
+    function create_html_card (cardName) {
     let front = document.createElement("img");
     let back = document.createElement("img");
     let card = document.createElement("div");
     card.className = "memory-card";
-    card.setAttribute("data-cardname", `${card_name}`);
+    card.setAttribute("data-cardname", `${cardName}`);
     front.className = "front-face";
-    front.src = "static/img/" + card_name + ".gif";
+    front.src = "static/img/" + cardName + ".gif";
     back.className = "back-face";
-    back.src = "static/img/adventurecardback.png";
+    back.src = "static/img/" + cardBack + ".png";
     card.appendChild(front);
     card.appendChild(back);
     return card;
     }
     let game = document.getElementsByClassName('memory-game');
-    game[0].appendChild(create_html_card(card_name));
-    game[0].appendChild(create_html_card(card_name));
+    game[0].appendChild(create_html_card(cardName));
+    game[0].appendChild(create_html_card(cardName));
 }
 
 
@@ -28,16 +28,19 @@ function pick_card () {
     audio.play();
     level1 = true;
     if (level1) {
-        var arrayOfCards = ["stalagg", "emperor", "feugen"]
+        var arrayOfCards = ["deathwing", "ragnaros"];
+        var cardback = "classiccardback"
     }
     else if (level2) {
         arrayOfCards = ["stalagg", "emperor", "feugen", "kelthuzad", "loatheb", "majordomo"]; ///"shade", "baron"];
+        cardback = "adventurecardback"
     }
     else {
-        arrayOfCards = []
+        arrayOfCards = ["chillmaw", "hadronox", "kun", "lichking", "pyros", "ragnaroslight", "reno", "swampking", "yshaarj"]
+        cardback = "goldencardback"
     }
     for (let i = 0; i < arrayOfCards.length; i++) {
-        create_duplicate_html_card(arrayOfCards[i])
+        create_duplicate_html_card(arrayOfCards[i], cardback)
     }
     addEventListeners();
 }
