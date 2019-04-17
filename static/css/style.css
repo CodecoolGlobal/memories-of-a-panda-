@@ -1,16 +1,28 @@
 img {
     width: 200px;
 }
-
 body {
     height: 100vh;
     display: flex;
-    background-image: url("/static/img/boardbigger.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
     position: relative;
 }
+
+
+body[data-cardback="level1"] {
+    background-image: url("/static/img/boardbigger.jpg");
+}
+
+body[data-cardback="level2"] {
+    background-image: url("/static/img/boardbiggerlevel2.jpg");
+}
+
+body[data-cardback="level3"] {
+    background-image: url("/static/img/boardbiggerlevel3.jpg");
+}
+
 
 .memory-game[data-level='1'] {
     width: 100vh;
@@ -20,8 +32,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     perspective: 1000px;
-    margin-top: 30vh;
-    margin-left: 39vh;
+    margin-top: 16vh;
+    margin-left: 65vh;
 }
 
 
@@ -49,13 +61,24 @@ body {
 }
 
 .memory-card {
-    width: calc(25% - 10px);
-    height: calc(33.333% - 10px);
+    width: calc(24% - 5px);
+    height: calc(33.333% - 5px);
     margin: 5px;
     position: relative;
     transform-style: preserve-3d;
     transition: 0.5s;
 }
+
+
+.memory-card[data-margin="secondCard"] {
+    margin-right: 33vh;
+}
+
+.memory-card[data-margin="thirdCard"] {
+    margin-top: -33vh !important;
+}
+
+
 
 .memory-card:active {
     transform: scale(.97);
