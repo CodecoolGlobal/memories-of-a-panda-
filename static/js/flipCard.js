@@ -1,6 +1,8 @@
 var level1, level2;
 
 
+
+
 function create_duplicate_html_card (card_name) {
     function create_html_card (card_name) {
     let front = document.createElement("img");
@@ -141,4 +143,5 @@ function addEventListeners () {
     }
 }
 
+welcomeScreen();
 pick_card();

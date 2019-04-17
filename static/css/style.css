@@ -5,7 +5,7 @@ img {
 body {
     height: 100vh;
     display: flex;
-    background-image: url("/static/img/startscreen.png");
+    background-image: url("/static/img/boardbigger.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
@@ -80,13 +80,3 @@ body {
     height: 100%;
     position: absolute;
 }
-
-.type2 {
-     height: 100vh;
-     display: flex;
-     background-image: url("/static/img/boardbigger.jpg");
-     background-repeat: no-repeat;
-     background-size: cover;
-     overflow: hidden;
-     position: relative;
- }
