@@ -12,7 +12,20 @@ body {
     position: relative;
 }
 
-.memory-game {
+.memory-game[data-level='1'] {
+    width: 100vh;
+    height: 100vh;
+    margin: auto;
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+    margin-top: 30vh;
+    margin-left: 39vh;
+}
+
+
+.memory-game[data-level='2'] {
     width: 69vh;
     height: 69vh;
     margin: auto;
@@ -20,9 +33,20 @@ body {
     flex-wrap: wrap;
     perspective: 1000px;
     margin-top: 16vh;
-    margin-left: 54vh;
+    margin-left: 55.5vh;
 }
 
+
+.memory-game[data-level='3'] {
+    width: 49vh;
+    height: 49vh;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+    margin-top: 16vh;
+    margin-left: 55.5vh;
+}
 
 .memory-card {
     width: calc(25% - 10px);
